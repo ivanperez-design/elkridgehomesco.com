@@ -117,9 +117,8 @@
       <a class="btn btn-ghost" href="tel:+19703936239" data-evt="call">Call Us</a>
       <a class="btn btn-ghost" href="sms:+19703936239" data-evt="text">Text Us</a>
     </div>
-    <!-- [BOOKING LINK] pending — hero secondary button when live (Calendly or Squarespace Scheduling):
-         <a class="btn btn-ghost" href="[BOOKING LINK]">Schedule a Call</a>
-         ⚠️ LAUNCH BLOCKER: confirm the booking link is live before publish. -->
+    <!-- Optional future hero button once a remodel-walkthrough booking page exists (cleaning already has its Google booking page):
+         <a class="btn btn-ghost" href="BOOKING-URL">Schedule a Call</a> -->
     <p class="hero-phone">Call or text <a href="tel:+19703936239" data-evt="call">970-393-6239</a><small>Photos of your space welcome · 30-minute response, Mon–Fri</small></p>
     <p class="hero-trust">Owner-run · messages returned the same business day · serving Steamboat Springs and the Yampa Valley.</p>
   </div>
@@ -164,9 +163,7 @@
         <h2>Tell us about <em>your project</em>.</h2>
         <p style="margin-top:14px">A few details get us started, and they help us come to your walkthrough already understanding the space. Required fields are marked with an asterisk; the rest just help us help you faster.</p>
         <p><b>We review it and reach out within 30 minutes during business hours.</b></p>
-        <!-- MOCK FORM: on Squarespace this becomes a native Form Block delivering to info@elkridgeinteriors.com (add a storage option / Google Sheet connection as backup). Set the file-upload field to accept images (jpg/png/heic). Keep Type-of-project a required select; Budget range stays optional with the "Not sure yet" option as a no-pressure out.
-             ⚠️ LAUNCH BLOCKER: confirm the Form Block delivers to a monitored inbox and the [BOOKING LINK] is live before publish. A placeholder action loses every submission.
-             Success message (form confirmation, verbatim): "Thanks — your request reached the owner directly. You'll hear back the same business day to set up your walkthrough."
+        <!-- REAL FORM (2026-08-15): posts via FormSubmit to info@elkridgeinteriors.com; _next redirects to ?sent=1 which shows the confirmation note (script.js). First-ever submission triggers FormSubmit's one-time activation email to info@ — click it, then the form is live. UTM/source hidden fields feed the lead ledger.
              Qualifier note (builder, not shown to clients): Type + Timeline + Budget-range are the gentle qualifier, framed as "so we can prepare." No minimum price is stated or implied anywhere on the page. Budget is optional and framed as a planning range, not a commitment. -->
         <form id="walkthrough-form" action="https://formsubmit.co/info@elkridgeinteriors.com" method="POST" style="margin-top:10px">
           <input type="hidden" name="_subject" value="NEW WEBSITE LEAD — elkridgehomesco.com">
