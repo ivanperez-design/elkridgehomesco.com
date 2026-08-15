@@ -1,0 +1,34 @@
+<!-- ============================================================
+     Elk Ridge Home — reusable hero-video component
+     Desktop plays the build video; mobile + reduced-motion show the poster still.
+     Swap the 3 PATHS + the headline/subhead/CTAs per page (homepage/interiors/exteriors).
+     Requires the rules in hero-video-styles.css (already in Site-v8/styles.css).
+     ============================================================ -->
+<section class="hero" aria-label="Intro">
+  <!-- AI concept animation — atmospheric hero only; never caption as a real ERH project; never place in a proof gallery -->
+  <div class="hero-img" role="img"
+       aria-label="A custom mountain-modern home in the Yampa Valley taking shape from blueprint to finished home"
+       style="background-image:url('assets/hero-system/homepage/homepage-hero-fallback.jpg')"></div>
+  <video class="hero-video" autoplay muted loop playsinline preload="metadata"
+         poster="assets/hero-system/homepage/homepage-hero-fallback.jpg" aria-hidden="true">
+    <source src="assets/hero-system/homepage/homepage-hero-desktop.mp4" type="video/mp4">
+  </video>
+  <div class="wrap hero-in">
+    <div class="eyebrow">Elk Ridge Home · Steamboat Springs &amp; Northwest Colorado</div>
+    <h1>Built for the Mountains. <em>Crafted for Home.</em></h1>
+    <p>Custom homes, remodels, and mountain construction for Northwest Colorado.</p>
+    <div class="cta-row on-dark">
+      <a class="btn btn-primary" href="contact.html" data-evt="start">Start Your Project</a>
+      <a class="btn btn-ghost" href="our-work.html">View Our Work</a>
+    </div>
+    <p class="hero-phone">Call or text <a href="tel:+19703936239" data-evt="call">970-393-6239</a><small>Photos of your project welcome · 30-minute response, Mon–Fri</small></p>
+  </div>
+  <div class="scrollcue">Scroll<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M19 12l-7 7-7-7"/></svg></div>
+</section>
+
+<!-- INTERIORS page: poster=interiors-hero-fallback.jpg, src=interiors-hero-desktop.mp4,
+     H1 "Interiors Built From Frame to Finish." · sub "Detailed remodels, finish work, and interior transformations built with mountain-home craftsmanship."
+     CTAs "Plan Your Interior Project" (contact.html) / "View Interior Work" (interior-remodels.html) -->
+<!-- EXTERIORS page: poster=exteriors-hero-fallback.jpg, src=exteriors-hero-desktop.mp4,
+     H1 "Exteriors Built for Colorado Weather." · sub "Roofing, siding, decks, windows, and exterior upgrades designed for Northwest Colorado homes."
+     CTAs "Start an Exterior Project" (contact.html) / "View Exterior Work" (exteriors.html) -->

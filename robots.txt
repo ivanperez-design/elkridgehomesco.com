@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+# Set https://elkridgehomesco.com to the live https origin at launch
+Sitemap: https://elkridgehomesco.com/sitemap.xml
