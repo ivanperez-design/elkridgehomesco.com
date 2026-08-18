@@ -12,11 +12,15 @@
 
 **Setup choices recorded:** Industry = Home & Garden (Google's taxonomy files construction/home-improvement there; affects benchmarking only, changeable in Admin → Property details) · Business size = Small (1–10) · Objective = Generate leads · Enhanced measurement ON · Google-products data sharing left OFF · Google Analytics marketing emails declined.
 
-**Still open (deliberately not done — each needs data or is a settings change worth Ivan's eyes):**
-1. **Mark key events** — Admin → Events → toggle *Mark as key event* on `erh_form_sent`, then `erh_call`, `erh_text`. Requires the events to have fired at least once, so do this after real traffic.
-2. **Exclude the FormSubmit referral** — Admin → Data streams → stream → Configure tag settings → Show all → List unwanted referrals → add `formsubmit.co`. Without it GA4 logs your own leads as referred by formsubmit.co and mis-attributes them away from Google/direct.
-3. **Link Google Ads** (Admin → Product links) — the actual reason the tracking gate existed. Do before any ad spend.
-4. **Link Search Console** (Admin → Product links).
+## Post-install config — attempted 2026-08-18, status per item
+
+**2. ✅ DONE — FormSubmit referral excluded.** Admin → Data streams → stream → Configure tag settings → Show more → List unwanted referrals → `Referral domain contains` = `formsubmit.co`. Saved (GA4 confirmed "Configuration saved"). Without this GA4 would have logged our own leads as referred by formsubmit.co and attributed them away from Google/direct. While in that panel GA4 independently reported **Tag quality: Excellent — "Tag is sending data. No issues detected."**
+
+**1. ⏳ BLOCKED BY TIME, not by anything we can fix.** In the current GA4 UI a key event is created by starring an event in **Admin → Data display → Events → Recent events**; there is no "type the event name" path any more. That tab is empty and GA4 states plainly: *"You'll see your first event displayed here within 24 hours."* So `erh_form_sent`, `erh_call`, `erh_text` cannot be marked until they have each fired at least once and surfaced (allow up to 24h). **Do this on/after 2026-08-19.** Note the property already auto-created three key events from the "Generate leads" objective (`close_convert_lead`, `purchase`, `qualify_lead`) — those are Google's placeholders, they will never fire on this site, and they are harmless. Ignore them; do not build reporting on them.
+
+**3. ⛔ IMPOSSIBLE TODAY — there is no Google Ads account to link.** Admin → Product links → Google Ads links → Link → "Link to Google Ads accounts I manage" returns **"No results found"**: info@elkridgeinteriors.com manages **zero** Google Ads accounts. This is a real sequencing discovery — the plan's chain (domain → site → tracking → LSA → Search) silently assumed an Ads account already existed. **New prerequisite: an Ads account must be created under info@ before the link, and before any LSA/Search spend.** Account creation is Ivan-only (Absolute Financial Authority Rule — it attaches a billing profile). Once it exists the link takes ~60 seconds.
+
+**4. Link Search Console** (Admin → Product links) — optional, not done, no dependency.
 
 ---
 
