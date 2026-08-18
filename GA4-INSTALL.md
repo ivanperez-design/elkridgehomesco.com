@@ -1,7 +1,7 @@
 # GA4 Install — staged, awaiting Measurement ID
 
-**Status:** ✅ **INSTALLED AND VERIFIED LIVE 2026-08-18.**
-**Date staged:** 2026-08-17 · **Date installed:** 2026-08-18
+**Status:** ✅ **INSTALLED AND VERIFIED LIVE 2026-08-17.**
+**Date staged:** 2026-08-17 · **Date installed:** 2026-08-17
 **Measurement ID:** `G-QK8KM3LY16` · **Property:** Elk Ridge Home LLC / `elkridgehomesco.com` (id `550302482`, account `404951749`), owned by **info@elkridgeinteriors.com**
 **Commit:** `6886f2f` on `main`, deployed to `gh-pages` via `deploy.sh`.
 
@@ -12,13 +12,13 @@
 
 **Setup choices recorded:** Industry = Home & Garden (Google's taxonomy files construction/home-improvement there; affects benchmarking only, changeable in Admin → Property details) · Business size = Small (1–10) · Objective = Generate leads · Enhanced measurement ON · Google-products data sharing left OFF · Google Analytics marketing emails declined.
 
-## Post-install config — attempted 2026-08-18, status per item
+## Post-install config — attempted 2026-08-17, status per item
 
 **2. ✅ DONE — FormSubmit referral excluded.** Admin → Data streams → stream → Configure tag settings → Show more → List unwanted referrals → `Referral domain contains` = `formsubmit.co`. Saved (GA4 confirmed "Configuration saved"). Without this GA4 would have logged our own leads as referred by formsubmit.co and attributed them away from Google/direct. While in that panel GA4 independently reported **Tag quality: Excellent — "Tag is sending data. No issues detected."**
 
-**1. ⏳ BLOCKED BY TIME, not by anything we can fix.** In the current GA4 UI a key event is created by starring an event in **Admin → Data display → Events → Recent events**; there is no "type the event name" path any more. That tab is empty and GA4 states plainly: *"You'll see your first event displayed here within 24 hours."* So `erh_form_sent`, `erh_call`, `erh_text` cannot be marked until they have each fired at least once and surfaced (allow up to 24h). **Do this on/after 2026-08-19.** Note the property already auto-created three key events from the "Generate leads" objective (`close_convert_lead`, `purchase`, `qualify_lead`) — those are Google's placeholders, they will never fire on this site, and they are harmless. Ignore them; do not build reporting on them.
+**1. ⏳ BLOCKED BY TIME, not by anything we can fix.** In the current GA4 UI a key event is created by starring an event in **Admin → Data display → Events → Recent events**; there is no "type the event name" path any more. That tab is empty and GA4 states plainly: *"You'll see your first event displayed here within 24 hours."* So `erh_form_sent`, `erh_call`, `erh_text` cannot be marked until they have each fired at least once and surfaced (allow up to 24h). **Do this on/after 2026-08-18.** Note the property already auto-created three key events from the "Generate leads" objective (`close_convert_lead`, `purchase`, `qualify_lead`) — those are Google's placeholders, they will never fire on this site, and they are harmless. Ignore them; do not build reporting on them.
 
-**3. ✅ DONE — GA4 ↔ Google Ads link CREATED 2026-08-18.** (Superseded the ⛔ note below, kept for the lesson.) Linked to Google Ads customer ID **`450-236-9884`** under info@. Settings: Personalized Advertising ON · Auto-Tagging ON · Analytics-features-from-Ads ON. GA4 returned **LINK CREATED**; data begins flowing within 24h.
+**3. ✅ DONE — GA4 ↔ Google Ads link CREATED 2026-08-17.** (Superseded the ⛔ note below, kept for the lesson.) Linked to Google Ads customer ID **`450-236-9884`** under info@. Settings: Personalized Advertising ON · Auto-Tagging ON · Analytics-features-from-Ads ON. GA4 returned **LINK CREATED**; data begins flowing within 24h.
 
 ⚠️ **How the account came to exist — read before touching Google Ads again.** Clicking "Start now" on ads.google.com while signed in as info@ **provisions the account shell immediately** — there is no confirmation step. The old "Switch to Expert Mode" / "Create an account without a campaign" escape **no longer exists**; the current flow forces a "Create your first campaign" wizard with no visible exit. **The account shell alone was enough for the GA4 link** — the wizard never had to be completed. So: `450-236-9884` exists, is linked to GA4, has **no billing profile, no payment method, no campaign, and cannot spend**. A pending "spend $500 get $500" offer sits on the payment step, unclaimed. **Do not complete the campaign wizard.** Adding billing and building the first campaign is a separate, deliberate, Ivan-only decision made against `SOP-Paid-Ads-Guardrails.md`, not inside a signup flow.
 
