@@ -50,5 +50,6 @@
     var n = document.getElementById('form-note');
     if (n) { n.textContent = 'Got it — your walkthrough request is in. We reply the same business day (Mon–Sat). Sooner: call or text 970-393-6239.'; }
     if (window.dataLayer) window.dataLayer.push({event: 'erh_form_sent'});
+    if (window.gtag) window.gtag('event', 'erh_form_sent', {page_path: location.pathname});
   }
 })();
