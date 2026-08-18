@@ -1,8 +1,22 @@
 # GA4 Install — staged, awaiting Measurement ID
 
-**Status:** 🟡 STAGED — nothing is inserted into the live site yet.
-**Date staged:** 2026-08-17
-**Blocker:** one thing only — Ivan creates the GA4 property and copies the Measurement ID (`G-XXXXXXXXXX`). Everything after that is one command.
+**Status:** ✅ **INSTALLED AND VERIFIED LIVE 2026-08-18.**
+**Date staged:** 2026-08-17 · **Date installed:** 2026-08-18
+**Measurement ID:** `G-QK8KM3LY16` · **Property:** Elk Ridge Home LLC / `elkridgehomesco.com` (id `550302482`, account `404951749`), owned by **info@elkridgeinteriors.com**
+**Commit:** `6886f2f` on `main`, deployed to `gh-pages` via `deploy.sh`.
+
+**Verification actually performed (not assumed):**
+- `curl` on the live site: **2** occurrences of `G-QK8KM3LY16` on `/` and on `/contact.html` (loader `src` + `gtag("config")`).
+- `curl` on live `script.js`: the `gtag('event', 'erh_form_sent', …)` patch is serving — the bug where the confirmed-lead event was pushed to `dataLayer` only (which gtag.js ignores) is **fixed in production**.
+- **GA4 Realtime showed 1 active user with `page_view`, `session_start`, `first_visit`** from a live page load. Data is genuinely flowing; the instrument is proven, per the "verify the instrument before believing the number" rule.
+
+**Setup choices recorded:** Industry = Home & Garden (Google's taxonomy files construction/home-improvement there; affects benchmarking only, changeable in Admin → Property details) · Business size = Small (1–10) · Objective = Generate leads · Enhanced measurement ON · Google-products data sharing left OFF · Google Analytics marketing emails declined.
+
+**Still open (deliberately not done — each needs data or is a settings change worth Ivan's eyes):**
+1. **Mark key events** — Admin → Events → toggle *Mark as key event* on `erh_form_sent`, then `erh_call`, `erh_text`. Requires the events to have fired at least once, so do this after real traffic.
+2. **Exclude the FormSubmit referral** — Admin → Data streams → stream → Configure tag settings → Show all → List unwanted referrals → add `formsubmit.co`. Without it GA4 logs your own leads as referred by formsubmit.co and mis-attributes them away from Google/direct.
+3. **Link Google Ads** (Admin → Product links) — the actual reason the tracking gate existed. Do before any ad spend.
+4. **Link Search Console** (Admin → Product links).
 
 ---
 
