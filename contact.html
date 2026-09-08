@@ -182,13 +182,18 @@
           <input type="hidden" name="_next" value="https://elkridgehomesco.com/contact.html?sent=1">
           <input type="hidden" name="_captcha" value="false">
           <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
-          <!-- UTM passthrough: inert preview fields. script.js populates these from the URL query string on load.
-               On the Squarespace Form Block migration, map these to hidden form fields so campaign attribution carries through to the monitored inbox / storage. -->
+          <!-- Attribution passthrough: script.js fills these on load from the URL query string, then from
+               localStorage ('erh_attrib') so a click that landed on another page still carries through to the inbox / ledger.
+               gclid / wbraid / gbraid + landing added 2026-09-08 (site PR-1, Google Ads plan §5.4). -->
           <input type="hidden" id="utm_source" name="utm_source">
           <input type="hidden" id="utm_medium" name="utm_medium">
           <input type="hidden" id="utm_campaign" name="utm_campaign">
           <input type="hidden" id="utm_content" name="utm_content">
           <input type="hidden" id="utm_term" name="utm_term">
+          <input type="hidden" id="gclid" name="gclid">
+          <input type="hidden" id="wbraid" name="wbraid">
+          <input type="hidden" id="gbraid" name="gbraid">
+          <input type="hidden" id="landing" name="landing">
           <div class="form-2">
             <div class="fld"><label for="f-name">Name *</label><input id="f-name" name="name" type="text" required autocomplete="name" placeholder="First and last"></div>
             <div class="fld"><label for="f-phone">Phone *</label><input id="f-phone" name="phone" type="tel" required autocomplete="tel" placeholder="Best number to reach you"></div>

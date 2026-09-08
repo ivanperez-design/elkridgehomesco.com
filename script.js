@@ -27,15 +27,39 @@
     if (window.gtag) window.gtag('event', evt, {page_path: location.pathname});
   });
 })();
-/* UTM passthrough — reads campaign params from the URL on load and fills the hidden
-   form fields so attribution carries through. Inert until the Squarespace Form Block migration. */
+/* Attribution passthrough (site PR-1, 2026-09-08 — Google Ads plan §5.4). On every page load,
+   read the Google click IDs (gclid / wbraid / gbraid) and utm_* from the URL, persist them in
+   localStorage ('erh_attrib', 90-day TTL) so a visitor who lands on a service page and opens
+   /contact later still carries the click, then fill the matching hidden form inputs —
+   URL value first, stored value second. A new non-empty value overwrites the stored one; a
+   param-less page view never erases a stored click. No external libraries. */
 (function(){
-  if (!('URLSearchParams' in window)) return;
-  var q = new URLSearchParams(location.search);
-  ['utm_source','utm_medium','utm_campaign','utm_content','utm_term'].forEach(function(k){
-    var el = document.getElementById(k);
-    if (el && q.has(k)) el.value = q.get(k);
-  });
+  try {
+    if (!('URLSearchParams' in window)) return;
+    var KEYS = ['gclid','wbraid','gbraid','utm_source','utm_medium','utm_campaign','utm_content','utm_term'];
+    var STORE = 'erh_attrib', TTL = 90 * 864e5, now = Date.now();
+    var q = new URLSearchParams(location.search), fromUrl = {}, any = false;
+    KEYS.forEach(function(k){ var v = q.get(k); if (v) { fromUrl[k] = v; any = true; } });
+    var stored = {};
+    try {
+      var o = JSON.parse(localStorage.getItem(STORE) || 'null');
+      if (o && o.ts && now - Date.parse(o.ts) <= TTL) stored = o;
+    } catch(e){}
+    if (any) {
+      var next = {};
+      KEYS.forEach(function(k){ if (stored[k]) next[k] = stored[k]; });
+      KEYS.forEach(function(k){ if (fromUrl[k]) next[k] = fromUrl[k]; });
+      next.landing = location.pathname;
+      next.ts = new Date(now).toISOString();
+      stored = next;
+      try { localStorage.setItem(STORE, JSON.stringify(next)); } catch(e){}
+    }
+    KEYS.concat('landing').forEach(function(k){
+      var v = fromUrl[k] || stored[k] || '';
+      if (!v) return;
+      document.querySelectorAll('input[type="hidden"][name="' + k + '"]').forEach(function(el){ el.value = v; });
+    });
+  } catch(e){}
 })();
 
 /* Real form: FormSubmit posts to the monitored inbox. Analytics fire on submit;
