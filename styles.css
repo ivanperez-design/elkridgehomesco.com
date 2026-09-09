@@ -56,7 +56,11 @@ img{display:block;max-width:100%}
 .hdr:not(.solid) .hdr-call{color:#fff}.hdr-call svg{width:16px;height:16px}
 .menu-btn{display:none;background:none;border:none;cursor:pointer;padding:8px}
 .menu-btn span{display:block;width:22px;height:2px;background:var(--ink);margin:4px 0}.hdr:not(.solid) .menu-btn span{background:#fff}
-@media(max-width:1200px){.nav{display:none}.hdr-call span{display:none}.hdr-cta .btn{display:none}.menu-btn{display:block}}
+@media(max-width:1200px){.nav{display:none}.hdr-cta .btn{display:none}.menu-btn{display:block}}
+/* PR-2 2026-09-08: the header number is no longer hidden below 1200px — a paid mobile click must land on a tappable 970-393-6239 above the fold. Sized down and nowrap so the 72px header never wraps. */
+.hdr-call span{white-space:nowrap}
+@media(max-width:760px){.hdr-in{gap:10px;padding:0 16px}.hdr-cta{gap:8px}.hdr-call{font-size:15px;gap:5px}.hdr-call svg{width:15px;height:15px}}
+@media(max-width:400px){.hdr-call{font-size:13.5px;gap:4px}.brand-logo{height:38px}.menu-btn{padding:8px 2px}}
 /* hero (shared) */
 .hero{position:relative;min-height:90vh;display:flex;align-items:flex-end;overflow:hidden;background:var(--ink);margin-top:-72px;padding-top:72px}
 .hero-img{position:absolute;inset:0;background-position:center 42%;background-size:cover;background-repeat:no-repeat;animation:kb 20s ease-out forwards}

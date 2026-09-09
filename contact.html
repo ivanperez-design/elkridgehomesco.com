@@ -32,11 +32,12 @@
   <meta name="twitter:image" content="https://elkridgehomesco.com/assets/brand/erh-og-card.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="assets/erh-cabinetry-01.jpg" fetchpriority="high">
 <link rel="stylesheet" href="styles.css">
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"GeneralContractor","name":"Elk Ridge Home LLC","url":"https://elkridgehomesco.com","sameAs":["https://maps.google.com/maps?cid=14895230277441864928"],"hasMap":"https://maps.google.com/maps?cid=14895230277441864928","image":"https://elkridgehomesco.com/assets/brand/erh-og-card.png","telephone":"+19703936239","email":"info@elkridgeinteriors.com","address":{"@type":"PostalAddress","addressLocality":"Steamboat Springs","addressRegion":"CO","postalCode":"80487","addressCountry":"US"},"areaServed":["Steamboat Springs CO","Old Town Steamboat Springs CO","Strawberry Park CO","Steamboat II CO","Catamount CO","Stagecoach CO","Clark CO","Hayden CO","Oak Creek CO","Craig CO","Yampa Valley CO","Routt County CO"],"priceRange":"$$$","openingHoursSpecification":{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday"],"opens":"07:00","closes":"17:00"}}
+{"@context":"https://schema.org","@type":"GeneralContractor","name":"Elk Ridge Home LLC","url":"https://elkridgehomesco.com","sameAs":["https://maps.google.com/maps?cid=14895230277441864928"],"hasMap":"https://maps.google.com/maps?cid=14895230277441864928","image":"https://elkridgehomesco.com/assets/brand/erh-og-card.png","telephone":"+19703936239","email":"info@elkridgeinteriors.com","address":{"@type":"PostalAddress","addressLocality":"Steamboat Springs","addressRegion":"CO","postalCode":"80487","addressCountry":"US"},"areaServed":["Steamboat Springs CO","Old Town Steamboat Springs CO","Strawberry Park CO","Steamboat II CO","Catamount CO","Stagecoach CO","Clark CO","Hayden CO","Oak Creek CO","Yampa Valley CO","Routt County CO"],"priceRange":"$$$","openingHoursSpecification":{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday"],"opens":"07:00","closes":"17:00"}}
 </script>
-<!-- VERIFY before launch: no statewide-CO GC license exists — use local Steamboat/Routt registration wording; no license number until confirmed. https://elkridgehomesco.com: add "url"+"image" to JSON-LD after migration. -->
+<!-- COMPLIANCE 2026-09-08: no contractor credential or registration claim may appear on this site (Colorado issues no state general-contractor credential and ERH is not on the Routt County registration list). Insurance only, verbatim: "Owner-run · Insured in Colorado — certificate of insurance available on request." -->
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://elkridgehomesco.com/"},{"@type":"ListItem","position":2,"name":"Contact","item":"https://elkridgehomesco.com/contact"}]}
 </script>
@@ -123,7 +124,8 @@
   <div class="wrap hero-in">
     <div class="eyebrow">Contact</div>
     <h1>Request your Steamboat Remodel <em>Walkthrough</em>.</h1>
-    <p>One short form starts it. You get a 20-minute call with the owner, a walkthrough of your space, honest scope and budget direction, and a written, line-item proposal within 48 hours of the walkthrough. No charge, no obligation, no pressure to decide anything on the spot.</p>
+    <p class="hero-phone">Call or text <a href="tel:+19703936239" data-evt="call">970-393-6239</a><small>Photos of your space welcome · messages returned the same business day</small></p>
+    <p>You get a 20-minute call with the owner, a walkthrough of your space, honest scope and budget direction, and a written, line-item proposal within 48 hours of the walkthrough.</p>
     <div class="cta-row on-dark">
       <a class="btn btn-primary" href="#walkthrough-form">Request a Consultation</a>
       <a class="btn btn-ghost" href="tel:+19703936239" data-evt="call">Call Us</a>
@@ -131,7 +133,6 @@
     </div>
     <!-- Optional future hero button once a remodel-walkthrough booking page exists (cleaning already has its Google booking page):
          <a class="btn btn-ghost" href="BOOKING-URL">Schedule a Call</a> -->
-    <p class="hero-phone">Call or text <a href="tel:+19703936239" data-evt="call">970-393-6239</a><small>Photos of your space welcome · 30-minute response, Mon–Fri</small></p>
     <p class="hero-trust">Owner-run · messages returned the same business day · serving Steamboat Springs and the Yampa Valley.</p>
   </div>
 </section>
@@ -174,7 +175,7 @@
         <div class="eyebrow">Request a Consultation</div>
         <h2>Tell us about <em>your project</em>.</h2>
         <p style="margin-top:14px">A few details get us started, and they help us come to your walkthrough already understanding the space. Required fields are marked with an asterisk; the rest just help us help you faster.</p>
-        <p><b>We review it and reach out within 30 minutes during business hours.</b></p>
+        <p><b>We review it and reach out the same business day.</b></p>
         <!-- REAL FORM (2026-08-15): posts via FormSubmit alias (activated 2026-08-17) to info@elkridgeinteriors.com; _next redirects to ?sent=1 which shows the confirmation note (script.js). First-ever submission triggers FormSubmit's one-time activation email to info@ — click it, then the form is live. UTM/source hidden fields feed the lead ledger.
              Qualifier note (builder, not shown to clients): Type + Timeline + Budget-range are the gentle qualifier, framed as "so we can prepare." No minimum price is stated or implied anywhere on the page. Budget is optional and framed as a planning range, not a commitment. -->
         <form id="walkthrough-form" action="https://formsubmit.co/info@elkridgeinteriors.com" method="POST" style="margin-top:10px">
@@ -253,7 +254,7 @@
           <div class="fld"><label for="f-area">Where's the project? *</label><select id="f-area" name="service-area" required>
             <option value="" selected disabled>Choose one</option>
             <option>Steamboat Springs</option>
-            <option>Elsewhere in the Yampa Valley (Hayden, Craig, Oak Creek, Stagecoach, Clark)</option>
+            <option>Elsewhere in the Yampa Valley (Hayden, Oak Creek, Stagecoach, Clark)</option>
             <option>Routt County — not sure of the town</option>
             <option>Outside Routt County / the Yampa Valley</option>
           </select><span class="form-note">We focus on Steamboat Springs and the Yampa Valley, so this helps us confirm we're the right fit before your walkthrough.</span></div>
@@ -296,7 +297,7 @@
       <div class="eyebrow">Where we work</div>
       <h2>Serving Steamboat Springs and the <em>Yampa Valley</em>.</h2>
       <div class="areas">
-        <span>Steamboat Springs</span><span>Hayden</span><span>Craig</span><span>Oak Creek</span><span>Stagecoach</span><span>Clark</span><span>Yampa Valley</span>
+        <span>Steamboat Springs</span><span>Hayden</span><span>Oak Creek</span><span>Stagecoach</span><span>Clark</span><span>Yampa Valley</span>
       </div>
       <p>Monday–Friday · 7am–5pm MT. Messages returned the same business day. You reach us directly — no call center, no obligation.</p>
       <p>Not sure if we serve your area? <a href="sms:+19703936239" data-evt="text">Text Us</a> and ask — 970-393-6239.</p>
@@ -332,7 +333,7 @@
         <ul style="opacity:.85">
           <li><a href="tel:+19703936239" data-evt="call">970-393-6239</a> · <a href="mailto:info@elkridgeinteriors.com" data-evt="email">info@elkridgeinteriors.com</a></li>
           <li>Mon–Fri 7am–5pm MT · messages returned the same business day</li>
-          <li>Serving Steamboat Springs · Hayden · Craig · Oak Creek · Stagecoach · Clark · the Yampa Valley</li>
+          <li>Serving Steamboat Springs · Hayden · Oak Creek · Stagecoach · Clark · the Yampa Valley</li>
         </ul>
       </div>
       <div><h3>What We Build</h3><ul>
@@ -361,7 +362,7 @@
         <div class="lien"><b>How we protect you from sub liens</b>Colorado law lets anyone who supplies labor or materials to your property file a lien if they aren't paid. We protect you from that — every sub is paid against a signed lien waiver, so a paid sub can't come back on your home.<br><br><em>Required disclosure (Colorado CRS §38-22-101):</em> Any person or company supplying labor or materials for this improvement to your property may file a lien against your property if that person or company is not paid for the contributions.</div>
       </div>
     </div>
-    <div class="f-bot"><span>© 2026 Elk Ridge Home LLC · Steamboat Springs, CO · Licensed and insured in Colorado — certificate of insurance available on request.<!-- VERIFY: no statewide-CO GC license; local Steamboat/Routt registration; no license number until confirmed --></span><span>Privacy · Terms</span></div>
+    <div class="f-bot"><span>© 2026 Elk Ridge Home LLC · Steamboat Springs, CO · Owner-run · Insured in Colorado — certificate of insurance available on request.<!-- COMPLIANCE 2026-09-08: no contractor credential or registration claim may appear on this site (Colorado issues no state general-contractor credential and ERH is not on the Routt County registration list). Insurance only, verbatim: "Owner-run · Insured in Colorado — certificate of insurance available on request." --></span><span>Privacy · Terms</span></div>
   </div>
 </footer>
 
