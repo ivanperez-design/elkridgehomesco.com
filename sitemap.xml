@@ -32,9 +32,7 @@
        <meta name="robots" content="noindex, follow">, is reached from paid clicks only, and is linked
        from no nav or footer; listing a noindex URL in the sitemap is a contradiction, and indexing them
        would compete with the pillar/spoke pages on the same topics.
-         https://elkridgehomesco.com/large-remodel-steamboat-springs
-         https://elkridgehomesco.com/new-home-builder-steamboat-springs
-         https://elkridgehomesco.com/carpentry-steamboat-springs
-       To index them instead: drop the robots meta on the page and move its URL out of this comment into
-       a <url> entry — one edit per page. -->
+       The URLs are not written out here either: this file is fetched by anyone, and listing them hands a
+       competitor the full paid-lander set for free. The campaign plan §7.2 and file 06 §9.0 hold the list.
+       To index one instead: drop the robots meta on that page and add its <url> entry above. -->
 </urlset>

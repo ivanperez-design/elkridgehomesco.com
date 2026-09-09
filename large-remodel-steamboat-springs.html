@@ -38,16 +38,19 @@
 <!-- AD LANDER (site PR-3, 2026-09-08 — Google Ads plan 2026-09-08 §7.2.1). Reached from paid clicks only.
      Lander-scoped CSS lives here so styles.css stays untouched: the chrome markup is kept verbatim so any
      sitewide nav/footer sweep still edits this page in step, but nav, drawer and hamburger are suppressed —
-     a paid click should have two exits, the phone and the form (plan §7.2, file 06 §9.0 item 2). -->
+     a paid click should have two exits, the phone and the form (plan §7.2, file 06 §9.0 item 2).
+     The header "Request a Consultation" button is kept in the markup for that same sweep-parity reason and
+     hidden by CSS below rather than deleted (file 06 §9.0 item 2 asked for it gone — this is the deviation,
+     recorded so the next sweep does not re-litigate it). Schema here is GeneralContractor + FAQPage only,
+     per file 06 §9.0: no Service and no BreadcrumbList on a page reachable from paid clicks alone. -->
 <style>
   body.lander .nav, body.lander .menu-btn, body.lander .drawer { display: none !important; }
   body.lander .hdr-call span { display: inline; }
+  body.lander .hdr-cta .btn { display: none; }
+  body.lander .hero .eyebrow { color:#fff; text-shadow:0 1px 8px rgba(0,0,0,.6); }
 </style>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"GeneralContractor","name":"Elk Ridge Home LLC","url":"https://elkridgehomesco.com","sameAs":["https://maps.google.com/maps?cid=14895230277441864928"],"hasMap":"https://maps.google.com/maps?cid=14895230277441864928","image":"https://elkridgehomesco.com/assets/brand/erh-og-card.png","telephone":"+19703936239","email":"info@elkridgeinteriors.com","address":{"@type":"PostalAddress","addressLocality":"Steamboat Springs","addressRegion":"CO","postalCode":"80487","addressCountry":"US"},"areaServed":["Steamboat Springs CO","Hayden CO","Oak Creek CO","Stagecoach CO","Clark CO","Yampa CO","Phippsburg CO","Milner CO","Routt County CO"],"openingHoursSpecification":{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday"],"opens":"07:00","closes":"17:00"}}
-</script>
-<script type="application/ld+json">
-{"@context":"https://schema.org","@type":"Service","name":"Whole-home remodels and additions","serviceType":"Whole-home remodel, gut renovation, and home addition contracting","url":"https://elkridgehomesco.com/large-remodel-steamboat-springs","provider":{"@type":"GeneralContractor","name":"Elk Ridge Home LLC","telephone":"+19703936239","url":"https://elkridgehomesco.com"},"areaServed":["Steamboat Springs CO","Hayden CO","Oak Creek CO","Stagecoach CO","Clark CO","Yampa CO","Phippsburg CO","Milner CO","Routt County CO"]}
 </script>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
@@ -55,9 +58,6 @@
 {"@type":"Question","name":"We live out of town. How does that work?","acceptedAnswer":{"@type":"Answer","text":"It is built for you. You get a photo and status update every week, a written weekly recap, selections and change orders handled by phone, text, and email, and one owner as your single point of contact. Most out-of-town owners see the house in person at the end, not in the middle."}},
 {"@type":"Question","name":"Do you take on additions and second stories, or only interior work?","acceptedAnswer":{"@type":"Answer","text":"Both. We take on a home addition as part of a remodel or on its own — new foundation to frost depth, matched roofline and siding so it reads as one home, permits and setbacks checked against your parcel before design gets too far along."}}
 ]}
-</script>
-<script type="application/ld+json">
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://elkridgehomesco.com/"},{"@type":"ListItem","position":2,"name":"Remodels","item":"https://elkridgehomesco.com/remodels"},{"@type":"ListItem","position":3,"name":"Whole-Home Remodels and Additions","item":"https://elkridgehomesco.com/large-remodel-steamboat-springs"}]}
 </script>
 <!-- COMPLIANCE 2026-09-08: no contractor credential or registration claim may appear on this site (Colorado issues no state general-contractor credential and ERH is not on the Routt County registration list). Insurance only, verbatim: "Owner-run · Insured in Colorado — certificate of insurance available on request." -->
 </head>
