@@ -182,6 +182,11 @@
           <input type="hidden" name="_subject" value="NEW WEBSITE LEAD — elkridgehomesco.com">
           <input type="hidden" name="_next" value="https://elkridgehomesco.com/contact.html?sent=1">
           <input type="hidden" name="_captcha" value="false">
+          <!-- Instant client acknowledgment (2026-09-09): FormSubmit auto-replies to the address in the
+               email field the moment the POST lands. Sets the call-back clock, gives Ivan's direct number,
+               and tells them what to have ready. Draft-only rule is untouched — this is the receipt, not the
+               reply; Ivan still sends the real one per SOP-Ad-Lead-Response-2026-09-09. -->
+          <input type="hidden" name="_autoresponse" value="Thanks for reaching out to Elk Ridge Home. I have your note about your project, and it came straight to me. I am Ivan, the owner — I run every job we take, so you are dealing with me from here, not an answering service. What happens next: if you sent this Monday through Friday between 7am and 5pm Mountain time, I will call you back within the hour. Outside those hours you will hear from me first thing the next morning. Two minutes of prep makes that first call worth having, so have three things handy — the property address, a rough idea of the scope, and roughly when you would want the work done. None of it has to be exact. If there is a second decision-maker on this project, reply with their name and best contact and I will keep you both in the loop from day one. Elk Ridge Home is owner-run and insured in Colorado — a certificate of insurance is available on request, and every sub on your house is insured and paid against a signed lien waiver. If you would rather not wait, call or text me directly at 970-393-6239. — Ivan | Elk Ridge Home LLC · 970-393-6239">
           <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
           <!-- Attribution passthrough: script.js fills these on load from the URL query string, then from
                localStorage ('erh_attrib') so a click that landed on another page still carries through to the inbox / ledger.
@@ -237,21 +242,11 @@
               <option>Just planning</option>
             </select><span class="form-note">Wherever you are is fine — even "just planning" is a good time to start.</span></div>
           </div>
-          <div class="fld"><label for="f-budget">Budget range</label><select id="f-budget" name="budget-range">
-            <option value="" selected disabled>Choose one</option>
-            <option>Under $25K</option>
-            <option>$25K–$50K</option>
-            <option>$50K–$100K</option>
-            <option>$100K–$200K</option>
-            <option>$200K+</option>
-            <option>Not sure yet — help me figure it out</option>
-          </select><span class="form-note">A general range helps us tailor the walkthrough — there's no wrong answer, and nothing here is a quote.</span>
-          <!-- [CONFIRM RANGE] budget tier values pending owner confirmation: Under $25K / $25K–$50K / $50K–$100K / $100K–$200K / $200K+ --></div>
           <div class="form-2">
             <div class="fld"><label for="f-besttime">Best time to contact</label><input id="f-besttime" name="best-time" type="text" placeholder="e.g., weekday mornings, after 5pm, anytime"></div>
             <div class="fld"><label for="f-hear">How did you hear about us?</label><input id="f-hear" name="how-heard" type="text" placeholder="Referral, Google, drove past a job, etc."></div>
           </div>
-          <div class="fld"><label for="f-area">Where's the project? *</label><select id="f-area" name="service-area" required>
+          <div class="fld"><label for="f-area">Where's the project?</label><select id="f-area" name="service-area">
             <option value="" selected disabled>Choose one</option>
             <option>Steamboat Springs</option>
             <option>Elsewhere in the Yampa Valley (Hayden, Oak Creek, Stagecoach, Clark)</option>
