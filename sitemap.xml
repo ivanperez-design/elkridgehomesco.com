@@ -27,4 +27,14 @@
   <url><loc>https://elkridgehomesco.com/masonry-steamboat-springs</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://elkridgehomesco.com/whole-home-remodel-steamboat-springs</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://elkridgehomesco.com/window-replacement-steamboat-springs</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <!-- AD LANDERS (site PR-3, 2026-09-08 — Google Ads plan 2026-09-08 §7.2, file 06 §9.0 item 11).
+       These three pages exist and are live, and they are DELIBERATELY NOT LISTED here. Each carries
+       <meta name="robots" content="noindex, follow">, is reached from paid clicks only, and is linked
+       from no nav or footer; listing a noindex URL in the sitemap is a contradiction, and indexing them
+       would compete with the pillar/spoke pages on the same topics.
+         https://elkridgehomesco.com/large-remodel-steamboat-springs
+         https://elkridgehomesco.com/new-home-builder-steamboat-springs
+         https://elkridgehomesco.com/carpentry-steamboat-springs
+       To index them instead: drop the robots meta on the page and move its URL out of this comment into
+       a <url> entry — one edit per page. -->
 </urlset>
