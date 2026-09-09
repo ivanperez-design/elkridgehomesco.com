@@ -33,7 +33,7 @@
   <meta name="twitter:image" content="https://elkridgehomesco.com/assets/brand/erh-og-card.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="preload" as="image" href="assets/erh-detail-porch-01.jpg" fetchpriority="high">
+<link rel="preload" as="image" href="assets/lander/erh-detail-porch-01-opt.jpg" fetchpriority="high">
 <link rel="stylesheet" href="styles.css">
 <!-- AD LANDER (site PR-3, 2026-09-08 — Google Ads plan 2026-09-08 §7.2.3). Reached from paid clicks only.
      Chrome markup kept verbatim so sitewide nav/footer sweeps still edit this page in step; nav, drawer and
@@ -48,6 +48,11 @@
   body.lander .hdr-call span { display: inline; }
   body.lander .hdr-cta .btn { display: none; }
   body.lander .hero .eyebrow { color:#fff; text-shadow:0 1px 8px rgba(0,0,0,.6); }
+  /* Calls-first sticky bar (preflight audit 2026-09-08, finding 33): Call is the widest tab and spells
+     the number out, Text is second, the Email tab is dropped here. Mailto stays in the form-fallback note. */
+  body.lander .actionbar a[href^="mailto"] { display: none; }
+  body.lander .actionbar a[href^="tel"] { flex: 1.9; }
+  body.lander .actionbar a[href^="sms"] { flex: 1; }
 </style>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"GeneralContractor","name":"Elk Ridge Home LLC","url":"https://elkridgehomesco.com","sameAs":["https://maps.google.com/maps?cid=14895230277441864928"],"hasMap":"https://maps.google.com/maps?cid=14895230277441864928","image":"https://elkridgehomesco.com/assets/brand/erh-og-card.png","telephone":"+19703936239","email":"info@elkridgeinteriors.com","address":{"@type":"PostalAddress","addressLocality":"Steamboat Springs","addressRegion":"CO","postalCode":"80487","addressCountry":"US"},"areaServed":["Steamboat Springs CO","Hayden CO","Oak Creek CO","Stagecoach CO","Clark CO","Yampa CO","Phippsburg CO","Milner CO","Routt County CO"],"openingHoursSpecification":{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday"],"opens":"07:00","closes":"17:00"}}
@@ -66,8 +71,8 @@
 <header class="hdr" id="hdr">
   <div class="hdr-in">
     <a class="brand" href="index.html" aria-label="Elk Ridge Home — home">
-      <img class="brand-logo brand-logo--color" src="assets/brand/erh-logo-horizontal.png" alt="" width="1100" height="614">
-      <img class="brand-logo brand-logo--white" src="assets/brand/erh-logo-horizontal-white.png" alt="" width="1100" height="614">
+      <img class="brand-logo brand-logo--color" src="assets/brand/erh-logo-horizontal-440.png" alt="" width="440" height="246">
+      <img class="brand-logo brand-logo--white" src="assets/brand/erh-logo-horizontal-white-440.png" alt="" width="440" height="246">
     </a>
     <nav class="nav" aria-label="Primary">
       <a href="custom-homes.html">New Builds</a>
@@ -139,7 +144,7 @@
 <!-- 1 · ABOVE THE FOLD — the qualifier is in the first screen on purpose -->
 <section class="hero compact" aria-label="Intro">
   <!-- PHOTO-SWAP: replace with a real ERH finished deck or finish-carpentry photo. Placeholder image — the alt text does not claim it as a completed Elk Ridge job. Never use assets/erh-deck-steamboat-01.jpg here: it is an AI concept image. -->
-  <div class="hero-img" role="img" aria-label="Log porch detail on a mountain home in the Yampa Valley" style="background-image:url('assets/erh-detail-porch-01.jpg')"></div>
+  <div class="hero-img" role="img" aria-label="Log porch detail on a mountain home in the Yampa Valley" style="background-image:url('assets/lander/erh-detail-porch-01-opt.jpg')"></div>
   <div class="wrap hero-in">
     <div class="eyebrow">Carpentry · Decks · Finish work · Framing for additions</div>
     <h1>Carpentry &amp; Deck Building in <em>Steamboat Springs</em></h1>
@@ -151,6 +156,9 @@
       <a class="btn btn-ghost" href="sms:+19703936239" data-evt="text">Text Us</a>
     </div>
     <p class="hero-trust">Owner on every job · Insured in Colorado — certificate of insurance available on request · Written proposal within 48 hours of your walkthrough</p>
+    <p class="hero-trust" style="margin-top:8px!important">General liability and Colorado workers' compensation in force — certificate available on request.</p>
+    <!-- Reviews: GBP is verified and live at 0 reviews, so there is nothing honest to display yet. This interim line names no client. Replace it with a real quote block the moment the first review lands. -->
+    <p class="hero-trust" style="margin-top:8px!important">Elk Ridge is new to Google reviews and old to this valley — the work speaks first. Ask for references from recent Steamboat projects and we will put you on the phone with the owner.</p>
   </div>
 </section>
 
@@ -181,6 +189,10 @@
     <form id="walkthrough-form" action="https://formsubmit.co/info@elkridgeinteriors.com" method="POST" style="margin-top:18px;max-width:62ch">
       <input type="hidden" name="_subject" value="NEW AD LEAD — Carpentry — elkridgehomesco.com">
       <input type="hidden" name="_next" value="https://elkridgehomesco.com/carpentry-steamboat-springs.html?sent=1">
+      <!-- ?sent=1 return: FormSubmit redirects back here after the POST, script.js swaps the confirmation
+           note and fires erh_form_sent. formsubmit.co MUST be on the GA4 unwanted-referrals list
+           (Admin -> Data streams -> Configure tag settings), or the return hit restarts the session as a
+           referral and the lead is mis-attributed away from google/cpc. Preflight audit finding 15. -->
       <input type="hidden" name="_captcha" value="false">
       <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
       <input type="hidden" name="project-type" value="Carpentry / Deck">
@@ -330,7 +342,7 @@
     <div class="f-grid">
       <div>
         <a class="brand" href="index.html" aria-label="Elk Ridge Home — home" style="margin-bottom:10px">
-        <img class="brand-logo" src="assets/brand/erh-logo-horizontal-white.png" alt="" width="1100" height="614">
+        <img class="brand-logo" src="assets/brand/erh-logo-horizontal-white-440.png" alt="" width="440" height="246" loading="lazy">
       </a>
         <p style="opacity:.85;max-width:36ch">Steamboat's remodel specialist, inside and out. Interior and exterior remodels — kitchens, baths, whole-home, decks, siding, framing — owner-run, written-scope, no surprises.</p>
         <ul style="opacity:.85">
@@ -348,7 +360,7 @@
 </footer>
 
 <nav class="actionbar" aria-label="Quick contact">
-  <a href="tel:+19703936239" data-evt="call"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>Call</a>
+  <a href="tel:+19703936239" data-evt="call"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>Call 970-393-6239</a>
   <a href="sms:+19703936239" data-evt="text"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>Text</a>
   <a href="mailto:info@elkridgeinteriors.com" data-evt="email"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>Email</a>
 </nav>
