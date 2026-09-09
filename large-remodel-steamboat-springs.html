@@ -192,6 +192,11 @@
            (Admin -> Data streams -> Configure tag settings), or the return hit restarts the session as a
            referral and the lead is mis-attributed away from google/cpc. Preflight audit finding 15. -->
       <input type="hidden" name="_captcha" value="false">
+      <!-- Instant client acknowledgment (2026-09-09): FormSubmit auto-replies to the address in the
+           email field the moment the POST lands. Sets the call-back clock, gives Ivan's direct number,
+           and tells them what to have ready. Draft-only rule is untouched — this is the receipt, not the
+           reply; Ivan still sends the real one per SOP-Ad-Lead-Response-2026-09-09. -->
+      <input type="hidden" name="_autoresponse" value="Thanks for reaching out to Elk Ridge Home. I have your note about your remodel, and it came straight to me. I am Ivan, the owner — I run every job we take, so you are dealing with me from here, not an answering service. What happens next: if you sent this Monday through Friday between 7am and 5pm Mountain time, I will call you back within the hour. Outside those hours you will hear from me first thing the next morning. Two minutes of prep makes that first call worth having, so have three things handy — the property address, a rough idea of the scope, and roughly when you would want the work done. None of it has to be exact. If there is a second decision-maker on this project, reply with their name and best contact and I will keep you both in the loop from day one. Elk Ridge Home is owner-run and insured in Colorado — a certificate of insurance is available on request, and every sub on your house is insured and paid against a signed lien waiver. If you would rather not wait, call or text me directly at 970-393-6239. — Ivan | Elk Ridge Home LLC · 970-393-6239">
       <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
       <input type="hidden" name="project-type" value="Major Remodel / Addition">
       <!-- Attribution passthrough (site PR-1): script.js fills these on load from the query string, then from
@@ -212,7 +217,7 @@
       </div>
       <div class="form-2">
         <div class="fld"><label for="f-email">Email *</label><input id="f-email" name="email" type="email" required autocomplete="email" placeholder="you@email.com"></div>
-        <div class="fld"><label for="f-area">Where's the project? *</label><select id="f-area" name="service-area" required>
+        <div class="fld"><label for="f-area">Where's the project?</label><select id="f-area" name="service-area">
           <option value="" selected disabled>Choose one</option>
           <option>Steamboat Springs</option>
           <option>Hayden</option>
