@@ -59,6 +59,27 @@
       if (!v) return;
       document.querySelectorAll('input[type="hidden"][name="' + k + '"]').forEach(function(el){ el.value = v; });
     });
+    /* Carry the click to the form pages (A3, 2026-09-09). Internal hrefs are bare relative
+       paths, so localStorage was the ONLY carrier across a navigation — and it is unavailable
+       under Safari "Block All Cookies"/Lockdown Mode and is capped at 7 days of browser use by
+       ITP. Decorating only the six form destinations keeps the rest of the site's URLs clean. */
+    var FORM_PAGES = ['contact.html','custom-homes.html','whole-home-remodel-steamboat-springs.html',
+                      'large-remodel-steamboat-springs.html','new-home-builder-steamboat-springs.html',
+                      'carpentry-steamboat-springs.html'];
+    var carry = {};
+    KEYS.forEach(function(k){ var v = fromUrl[k] || stored[k]; if (v) carry[k] = v; });
+    if (Object.keys(carry).length) {
+      document.querySelectorAll('a[href]').forEach(function(a){
+        var href = a.getAttribute('href') || '';
+        if (!FORM_PAGES.some(function(p){ return href.indexOf(p) === 0 || href.indexOf('/' + p) === 0; })) return;
+        try {
+          var u = new URL(a.href, location.href);
+          if (u.origin !== location.origin) return;
+          Object.keys(carry).forEach(function(k){ if (!u.searchParams.get(k)) u.searchParams.set(k, carry[k]); });
+          a.setAttribute('href', u.pathname + u.search + u.hash);
+        } catch(e){}
+      });
+    }
   } catch(e){}
 })();
 
@@ -70,10 +91,27 @@
     if (window.dataLayer) window.dataLayer.push({event: 'erh_form', page: location.pathname});
     if (window.gtag) window.gtag('event', 'erh_form', {page_path: location.pathname});
   });
-  if (new URLSearchParams(location.search).get('sent') === '1') {
+  /* ?sent=1 return. Two problems fixed here (A3 failure simulation, 2026-09-09):
+     (1) the note stated a promise no clock backs — the campaign now serves Mon–Sun 06:00–21:00
+         while Ivan answers the phone Mon–Fri 07:00–17:00 (SOP-Ad-Lead-Response §1);
+     (2) erh_form_sent fired on EVERY load carrying ?sent=1 — a refresh, a forward-nav or a
+         shared link each booked another conversion. Guarded with sessionStorage, then the
+         parameter is stripped from the address bar so a reload cannot repeat it. */
+  var q = new URLSearchParams(location.search);
+  if (q.get('sent') === '1') {
     var n = document.getElementById('form-note');
-    if (n) { n.textContent = 'Got it — your walkthrough request is in. We reply the same business day (Mon–Sat). Sooner: call or text 970-393-6239.'; }
-    if (window.dataLayer) window.dataLayer.push({event: 'erh_form_sent'});
-    if (window.gtag) window.gtag('event', 'erh_form_sent', {page_path: location.pathname});
+    if (n) { n.textContent = 'Got it — your request is in. Monday through Friday, 7am to 8pm Mountain time, I reply within the hour. Evenings after 8pm and weekends, you will hear from me by 7:15 the next weekday morning. Sooner: call or text 970-393-6239.'; }
+    var key = 'erh_form_sent:' + location.pathname, fired = false;
+    try { fired = sessionStorage.getItem(key) === '1'; } catch(e){}
+    if (!fired) {
+      try { sessionStorage.setItem(key, '1'); } catch(e){}
+      if (window.dataLayer) window.dataLayer.push({event: 'erh_form_sent'});
+      if (window.gtag) window.gtag('event', 'erh_form_sent', {page_path: location.pathname});
+    }
+    try {
+      q.delete('sent');
+      var qs = q.toString();
+      history.replaceState(null, '', location.pathname + (qs ? '?' + qs : '') + location.hash);
+    } catch(e){}
   }
 })();

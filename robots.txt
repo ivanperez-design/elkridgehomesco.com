@@ -1,5 +1,6 @@
 User-agent: *
 Allow: /
 
-# Set https://elkridgehomesco.com to the live https origin at launch
+# Live origin (verified 2026-09-09): https://elkridgehomesco.com — apex, non-www, https.
+# http, www, and elkridgeinteriors.com all 301 here.
 Sitemap: https://elkridgehomesco.com/sitemap.xml
