@@ -100,7 +100,7 @@
   var q = new URLSearchParams(location.search);
   if (q.get('sent') === '1') {
     var n = document.getElementById('form-note');
-    if (n) { n.textContent = 'Got it — your request is in. Monday through Friday, 7am to 8pm Mountain time, I reply within the hour. Evenings after 8pm and weekends, you will hear from me by 7:15 the next weekday morning. Sooner: call or text 970-393-6239.'; }
+    if (n) { n.textContent = 'Got it — your request is in. Monday through Friday, I reply by the end of the same business day - most of the time much sooner. Messages after hours or on weekends get a reply by 5pm Mountain the next business day. Sooner: call or text 970-393-6239.'; }
     var key = 'erh_form_sent:' + location.pathname, fired = false;
     try { fired = sessionStorage.getItem(key) === '1'; } catch(e){}
     if (!fired) {
