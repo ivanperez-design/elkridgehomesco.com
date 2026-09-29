@@ -88,6 +88,14 @@
 (function(){
   var f = document.getElementById('walkthrough-form');
   if (f) f.addEventListener('submit', function(){
+    /* Backup lead pipe (2026-09-29): FormSubmit returned HTTP 500 on every browser POST that day and
+       lost the lead. Dual-write every submission to an ERH-owned Apps Script web app that emails info@
+       and logs to the leads sheet. Fire-and-forget; the normal FormSubmit POST still proceeds. */
+    try {
+      var ERH_BACKUP_LEAD_URL = 'https://script.google.com/macros/s/AKfycbzArD3w9Tp8GOBgqGZmlhrdE6sEGQgE5Th6_7kOcyQPLB3yw1Y1tXkK4LHMyKBPT717FQ/exec';
+      var fd = new FormData(f); fd.append('landing_url', location.href); fd.append('pipe', 'backup');
+      fetch(ERH_BACKUP_LEAD_URL, {method: 'POST', mode: 'no-cors', body: new URLSearchParams(fd), keepalive: true});
+    } catch (e) {}
     if (window.dataLayer) window.dataLayer.push({event: 'erh_form', page: location.pathname});
     if (window.gtag) window.gtag('event', 'erh_form', {page_path: location.pathname});
   });
