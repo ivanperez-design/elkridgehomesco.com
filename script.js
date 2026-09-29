@@ -87,17 +87,26 @@
    ?sent=1 (the _next redirect) shows the confirmation note. */
 (function(){
   var f = document.getElementById('walkthrough-form');
-  if (f) f.addEventListener('submit', function(){
-    /* Backup lead pipe (2026-09-29): FormSubmit returned HTTP 500 on every browser POST that day and
-       lost the lead. Dual-write every submission to an ERH-owned Apps Script web app that emails info@
-       and logs to the leads sheet. Fire-and-forget; the normal FormSubmit POST still proceeds. */
-    try {
-      var ERH_BACKUP_LEAD_URL = 'https://script.google.com/macros/s/AKfycbzArD3w9Tp8GOBgqGZmlhrdE6sEGQgE5Th6_7kOcyQPLB3yw1Y1tXkK4LHMyKBPT717FQ/exec';
-      var fd = new FormData(f); fd.append('landing_url', location.href); fd.append('pipe', 'backup');
-      fetch(ERH_BACKUP_LEAD_URL, {method: 'POST', mode: 'no-cors', body: new URLSearchParams(fd), keepalive: true});
-    } catch (e) {}
+  if (f) f.addEventListener('submit', function(ev){
     if (window.dataLayer) window.dataLayer.push({event: 'erh_form', page: location.pathname});
     if (window.gtag) window.gtag('event', 'erh_form', {page_path: location.pathname});
+    /* Lead pipe (2026-09-29): FormSubmit returned HTTP 500 on every browser POST that day and lost the
+       lead, and its error page is what the visitor saw. Now: send the lead to the ERH-owned Apps Script
+       backup (emails info@ + logs to the leads sheet) AND to FormSubmit's AJAX endpoint, then show our
+       own confirmation (?sent=1). If anything in here throws, fall through to the plain POST. */
+    try {
+      var ERH_BACKUP_LEAD_URL = 'https://script.google.com/macros/s/AKfycbzArD3w9Tp8GOBgqGZmlhrdE6sEGQgE5Th6_7kOcyQPLB3yw1Y1tXkK4LHMyKBPT717FQ/exec';
+      var fd = new FormData(f); fd.append('landing_url', location.href);
+      var body = new URLSearchParams(fd);
+      var nextEl = f.querySelector('input[name="_next"]');
+      var next = nextEl ? nextEl.value : (location.pathname + '?sent=1');
+      ev.preventDefault();
+      var btn = f.querySelector('button[type="submit"],input[type="submit"]'); if (btn) btn.disabled = true;
+      fetch('https://formsubmit.co/ajax/info@elkridgeinteriors.com', {method: 'POST', mode: 'no-cors', body: body, keepalive: true}).catch(function(){});
+      fetch(ERH_BACKUP_LEAD_URL, {method: 'POST', mode: 'no-cors', body: body, keepalive: true})
+        .catch(function(){})
+        .then(function(){ location.href = next; });
+    } catch (e) { /* plain POST proceeds */ }
   });
   /* ?sent=1 return. Two problems fixed here (A3 failure simulation, 2026-09-09):
      (1) the note stated a promise no clock backs — the campaign now serves Mon–Sun 06:00–21:00
