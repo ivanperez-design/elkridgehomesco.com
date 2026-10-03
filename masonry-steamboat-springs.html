@@ -137,7 +137,7 @@
     <h1>Masonry &amp; Stonework in <em>Steamboat Springs</em></h1>
     <p>Stone fireplaces, chimneys, veneer, flagstone patios, and retaining walls — set by a master mason, built to survive freeze-thaw, and detailed so water never gets a foothold. A written scope before we build, a photo update every week, and the owner on every job.</p>
     <div class="cta-row on-dark">
-      <a class="btn btn-primary" href="contact.html">Request a Consultation</a>
+      <a class="btn btn-primary" href="#walkthrough-form">Request a Consultation</a>
       <a class="btn btn-ghost" href="tel:+19703936239" data-evt="call">Call Us</a>
       <a class="btn btn-ghost" href="sms:+19703936239" data-evt="text">Text Us</a>
     </div>
@@ -202,7 +202,7 @@
       <!-- [CONFIRM RANGE with the owner before any figure is published — never expose markup, O&P, or contingency.] -->
     </div>
     <div class="cta-row reveal" style="margin-top:26px">
-      <a class="btn btn-primary" href="contact.html">Request a Consultation</a>
+      <a class="btn btn-primary" href="#walkthrough-form">Request a Consultation</a>
       <a class="btn btn-ghost" href="tel:+19703936239" data-evt="call">Call Us</a>
     </div>
   </div>
@@ -223,7 +223,7 @@
           <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span><strong>Fire-wise by nature.</strong> Stone is non-combustible — in Routt County's mapped wildfire zones, stone veneer, skirting, and patios are real assets in an ignition-resistant exterior.</span></div>
           <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span><strong>Mountain sun is brutal.</strong> High-altitude UV fades cheap manufactured veneer. We match the material to the exposure — natural stone where it earns its keep, quality veneer where it makes sense.</span></div>
         </div>
-        <div class="cta-row" style="margin-top:24px"><a class="btn btn-primary" href="contact.html">Request a Consultation</a></div>
+        <div class="cta-row" style="margin-top:24px"><a class="btn btn-primary" href="#walkthrough-form">Request a Consultation</a></div>
       </div>
     </div>
   </div>
@@ -238,7 +238,7 @@
       <!-- VERIFY: masonry-lead engagement status before publish — attribution above is written for the division-lead arrangement; confirm current status with the owner. -->
     </div>
     <div class="cta-row on-dark reveal" style="margin-top:26px">
-      <a class="btn btn-primary" href="contact.html">Request a Consultation</a>
+      <a class="btn btn-primary" href="#walkthrough-form">Request a Consultation</a>
       <a class="btn btn-ghost" href="remodel-process.html">See Our Full Remodel Process</a>
     </div>
   </div>
@@ -285,7 +285,7 @@
         <!-- WARRANTY TERM UNRESOLVED 2026-09-08: no warranty length may be published on this site until the signed workmanship-warranty document is verified. Say "a written workmanship warranty" with no number. -->
       </details>
     </div>
-    <div class="cta-row reveal" style="margin-top:30px;justify-content:center"><a class="btn btn-primary" href="contact.html">Request a Consultation</a></div>
+    <div class="cta-row reveal" style="margin-top:30px;justify-content:center"><a class="btn btn-primary" href="#walkthrough-form">Request a Consultation</a></div>
   </div>
 </section>
 
@@ -310,13 +310,61 @@
   </div>
 </section>
 
+<!-- 7b · REQUEST FORM (2026-10-03) — the page was calls-only; an after-hours visitor had no way to leave a request. script.js handles #walkthrough-form (backup pipe + FormSubmit + ?sent=1 + erh_form_sent). -->
+<section class="band cream" id="request">
+  <div class="wrap">
+    <div class="reveal" style="max-width:62ch">
+      <div class="eyebrow">Request a Consultation</div>
+      <h2>Tell us about <em>the stonework</em>.</h2>
+      <p style="margin-top:14px">Four answers and we can tell you whether we're the right mason for it. We reply the same business day. Photos help — text them to 970-393-6239.</p>
+    </div>
+    <form id="walkthrough-form" action="https://formsubmit.co/info@elkridgeinteriors.com" method="POST" style="margin-top:18px;max-width:62ch">
+      <input type="hidden" name="_subject" value="NEW AD LEAD — Masonry — elkridgehomesco.com">
+      <input type="hidden" name="_next" value="https://elkridgehomesco.com/masonry-steamboat-springs.html?sent=1">
+      <input type="hidden" name="_captcha" value="false">
+      <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+      <input type="hidden" name="project-type" value="Masonry / Stonework">
+      <input type="hidden" id="utm_source" name="utm_source">
+      <input type="hidden" id="utm_medium" name="utm_medium">
+      <input type="hidden" id="utm_campaign" name="utm_campaign">
+      <input type="hidden" id="utm_content" name="utm_content">
+      <input type="hidden" id="utm_term" name="utm_term">
+      <input type="hidden" id="gclid" name="gclid">
+      <input type="hidden" id="wbraid" name="wbraid">
+      <input type="hidden" id="gbraid" name="gbraid">
+      <input type="hidden" id="landing" name="landing">
+      <div class="form-2">
+        <div class="fld"><label for="f-name">Name *</label><input id="f-name" name="name" type="text" required autocomplete="name" placeholder="First and last"></div>
+        <div class="fld"><label for="f-phone">Phone *</label><input id="f-phone" name="phone" type="tel" required autocomplete="tel" placeholder="The number to reach you on"></div>
+      </div>
+      <div class="form-2">
+        <div class="fld"><label for="f-email">Email</label><input id="f-email" name="email" type="email" autocomplete="email" placeholder="you@email.com"></div>
+        <div class="fld"><label for="f-scope">What stonework? *</label><select id="f-scope" name="project-scope" required>
+          <option value="" selected disabled>Choose one</option>
+          <option>Fireplace or interior stone</option>
+          <option>Stone veneer</option>
+          <option>Chimney or stone repair</option>
+          <option>Retaining wall</option>
+          <option>Patio, path or fire pit</option>
+          <option>Something else</option>
+        </select></div>
+      </div>
+      <div class="fld"><label for="f-message">A couple of lines about the project</label><textarea id="f-message" name="message" placeholder="Where it is, roughly how big, and what you'd like it to look like."></textarea></div>
+      <button class="btn btn-primary" type="submit" style="width:100%;margin-top:8px">Request a Consultation</button>
+      <p class="form-note" id="form-note" aria-live="polite" role="status">No obligation. Prefer to talk it through? Call or text 970-393-6239.</p>
+      <p class="form-note">Your information stays with us — we never share or sell it.</p>
+      <p class="form-note">If the form doesn't send, email <a href="mailto:info@elkridgeinteriors.com" data-evt="email">info@elkridgeinteriors.com</a> or call or text <a href="tel:+19703936239" data-evt="call">970-393-6239</a>.</p>
+    </form>
+  </div>
+</section>
+
 <!-- 8 · FINAL CTA BAND -->
 <section class="band forest" id="contact-cta">
   <div class="wrap ctaband reveal">
     <h2>Stone done right <em>the first time</em></h2>
     <a class="phone-big" href="tel:+19703936239" data-evt="call">970-393-6239</a>
     <div class="cta-row on-dark">
-      <a class="btn btn-primary" href="contact.html">Request a Consultation</a>
+      <a class="btn btn-primary" href="#walkthrough-form">Request a Consultation</a>
       <a class="btn btn-ghost" href="tel:+19703936239" data-evt="call">Call Us</a>
       <a class="btn btn-ghost" href="sms:+19703936239" data-evt="text">Text Us</a>
       <a class="btn btn-ghost" href="mailto:info@elkridgeinteriors.com" data-evt="email">Email</a>
