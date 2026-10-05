@@ -118,6 +118,24 @@
   if (q.get('sent') === '1') {
     var n = document.getElementById('form-note');
     if (n) { n.textContent = 'Got it — your request is in. Monday through Friday, I reply by the end of the same business day - most of the time much sooner. Messages after hours or on weekends get a reply by 5pm Mountain the next business day. Sooner: call or text 970-393-6239.'; }
+    /* What happens next (2026-10-05). After the redirect the visitor lands at the top of the page and never
+       saw the note down by the form, so the confirmation now sits above the form and is scrolled into view. */
+    if (f && !document.getElementById('next-steps')) {
+      var box = document.createElement('div');
+      box.id = 'next-steps'; box.setAttribute('role', 'status');
+      box.style.cssText = 'margin:18px 0 22px;padding:20px 22px;border:1px solid rgba(45,74,62,.25);border-left:4px solid #2D4A3E;border-radius:4px;background:#fff;max-width:62ch';
+      box.innerHTML = '<p style="margin:0 0 10px;font-weight:600;font-size:1.1em">Got it. Your request is in.</p>' +
+        '<p style="margin:0 0 8px">What happens next:</p>' +
+        '<ol style="margin:0 0 12px 1.2em;padding:0;line-height:1.55">' +
+        '<li style="margin-bottom:6px"><strong>Ivan, the owner, calls you.</strong> The same business day, Monday through Friday. After hours or on a weekend, by 5pm Mountain the next business day.</li>' +
+        '<li style="margin-bottom:6px"><strong>A walkthrough.</strong> On site, or by photo and video if you are away.</li>' +
+        '<li><strong>A written, line-item proposal</strong> within 48 hours of the walkthrough.</li></ol>' +
+        '<p style="margin:0">Sooner: call or text <a href="tel:+19703936239" data-evt="call">970-393-6239</a>.</p>';
+      f.parentNode.insertBefore(box, f);
+      /* instant, not smooth: a smooth scroll never finishes in a background tab, and the visitor must see this */
+      var showBox = function(){ try { var r = box.getBoundingClientRect(); window.scrollTo({top: Math.max(0, window.pageYOffset + r.top - 110), behavior: 'instant'}); } catch(e){ try { box.scrollIntoView(); } catch(e2){} } };
+      showBox(); window.addEventListener('load', function(){ setTimeout(showBox, 80); });
+    }
     var key = 'erh_form_sent:' + location.pathname, fired = false;
     try { fired = sessionStorage.getItem(key) === '1'; } catch(e){}
     if (!fired) {
