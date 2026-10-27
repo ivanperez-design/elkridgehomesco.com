@@ -65,7 +65,8 @@
        ITP. Decorating only the six form destinations keeps the rest of the site's URLs clean. */
     var FORM_PAGES = ['contact.html','custom-homes.html','whole-home-remodel-steamboat-springs.html',
                       'large-remodel-steamboat-springs.html','new-home-builder-steamboat-springs.html',
-                      'carpentry-steamboat-springs.html'];
+                      'carpentry-steamboat-springs.html',
+                      'general-contractor-steamboat-springs.html','masonry-steamboat-springs.html'];
     var carry = {};
     KEYS.forEach(function(k){ var v = fromUrl[k] || stored[k]; if (v) carry[k] = v; });
     if (Object.keys(carry).length) {
@@ -102,10 +103,20 @@
       var next = nextEl ? nextEl.value : (location.pathname + '?sent=1');
       ev.preventDefault();
       var btn = f.querySelector('button[type="submit"],input[type="submit"]'); if (btn) btn.disabled = true;
-      fetch('https://formsubmit.co/ajax/info@elkridgeinteriors.com', {method: 'POST', mode: 'no-cors', body: body, keepalive: true}).catch(function(){});
-      fetch(ERH_BACKUP_LEAD_URL, {method: 'POST', mode: 'no-cors', body: body, keepalive: true})
-        .catch(function(){})
-        .then(function(){ location.href = next; });
+      /* 2026-10-27 (audit item 4): ?sent=1 — and so erh_form_sent — only after a pipe CONFIRMS it has the
+         lead (FormSubmit AJAX answers JSON success; the Apps Script answers 2xx). No confirmation within
+         8 s → plain POST to FormSubmit, whose own redirect returns here only once it accepted the lead. */
+      var done = false;
+      function confirmed(){ if (!done) { done = true; location.href = next; } }
+      function fallback(){ if (!done) { done = true; HTMLFormElement.prototype.submit.call(f); } }
+      var fsAjax = f.getAttribute('action').replace('formsubmit.co/', 'formsubmit.co/ajax/');
+      var a = fetch(fsAjax, {method: 'POST', body: body, headers: {'Accept': 'application/json'}})
+        .then(function(r){ return r.json(); })
+        .then(function(j){ if (j && String(j.success) === 'true') confirmed(); else throw 0; });
+      var b = fetch(ERH_BACKUP_LEAD_URL, {method: 'POST', body: body})
+        .then(function(r){ if (r.ok) confirmed(); else throw 0; });
+      Promise.all([a.catch(function(){}), b.catch(function(){})]).then(fallback);
+      setTimeout(fallback, 8000);
     } catch (e) { /* plain POST proceeds */ }
   });
   /* ?sent=1 return. Two problems fixed here (A3 failure simulation, 2026-09-09):
