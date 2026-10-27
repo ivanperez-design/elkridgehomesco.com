@@ -65,7 +65,8 @@
        ITP. Decorating only the six form destinations keeps the rest of the site's URLs clean. */
     var FORM_PAGES = ['contact.html','custom-homes.html','whole-home-remodel-steamboat-springs.html',
                       'large-remodel-steamboat-springs.html','new-home-builder-steamboat-springs.html',
-                      'carpentry-steamboat-springs.html'];
+                      'carpentry-steamboat-springs.html',
+                      'general-contractor-steamboat-springs.html','masonry-steamboat-springs.html'];
     var carry = {};
     KEYS.forEach(function(k){ var v = fromUrl[k] || stored[k]; if (v) carry[k] = v; });
     if (Object.keys(carry).length) {
