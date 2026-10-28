@@ -36,10 +36,14 @@
 (function(){
   try {
     if (!('URLSearchParams' in window)) return;
-    var KEYS = ['gclid','wbraid','gbraid','utm_source','utm_medium','utm_campaign','utm_content','utm_term'];
+    var KEYS = ['gclid','wbraid','gbraid','utm_source','utm_medium','utm_campaign','utm_content','utm_term','ref'];
     var STORE = 'erh_attrib', TTL = 90 * 864e5, now = Date.now();
     var q = new URLSearchParams(location.search), fromUrl = {}, any = false;
     KEYS.forEach(function(k){ var v = q.get(k); if (v) { fromUrl[k] = v; any = true; } });
+    /* External referrer host (2026-10-28, AI-search tracking): chatgpt.com, perplexity.ai,
+       copilot.microsoft.com, gemini.google.com etc. arrive with no utm, only a referrer. */
+    try { var rh = document.referrer ? new URL(document.referrer).hostname : '';
+      if (rh && rh.replace(/^www\./,'') !== location.hostname.replace(/^www\./,'')) { fromUrl.ref = rh; any = true; } } catch(e){}
     var stored = {};
     try {
       var o = JSON.parse(localStorage.getItem(STORE) || 'null');
